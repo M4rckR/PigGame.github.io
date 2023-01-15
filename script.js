@@ -1,5 +1,7 @@
 'use strict';
 
+const player_1 =document.querySelector('.player--0')
+const player_2 =document.querySelector('.player--1')
 const btnRoll = document.querySelector('.btn--roll');
 const diceIgm = document.querySelector('.dice');
 const player1 = document.getElementById('score--0')
@@ -22,10 +24,13 @@ btnRoll.addEventListener('click', () => {
     diceIgm.src = `img/dice-${dice}.png`
     if(dice!==1) {
         suma+=dice
-        currentScore1.textContent = suma;
+        document.getElementById(`current--${activePlayer}`).textContent=suma;
     }
     else {
-
+        activePlayer = activePlayer===0? 1:0;
+        // Con esto asignamos o eliminamos si se encuentra dicha clase
+        player_1.classList.toggle('player--active')
+        player_2.classList.toggle('player--active')
     }
 
 })
